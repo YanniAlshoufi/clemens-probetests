@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.control.Button?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="at.htlleonding.settignsmanager.view.AppVCtl">
     <padding>
@@ -24,13 +25,7 @@
             </BorderPane>
         </top>
         <left>
-            <ListView style="-fx-padding: 20px">
-                <Label>Setting 1</Label>
-                <Label>Setting 2</Label>
-                <Label>Setting 3</Label>
-                <Label>Setting 4</Label>
-                <Label>Setting 5</Label>
-            </ListView>
+            <ListView onMouseClicked="#onSettingClick" fx:id="mSettings" style="-fx-padding: 20px"/>
         </left>
         <center>
             <VBox>
@@ -41,12 +36,13 @@
                 </BorderPane>
                 <VBox>
                     <Label style="-fx-font-size: 13pt; -fx-padding: 0 0 0 20px">Properties</Label>
-                    <TableView fx:id="propertiesTableView">
+                    <TableView fx:id="mPropertiesTableView">
                         <columns>
-                            <TableColumn text="Name"/>
-                            <TableColumn text="Value"/>
+                            <TableColumn fx:id="mName" text="Name"/>
+                            <TableColumn fx:id="mValue" text="Value"/>
                         </columns>
                     </TableView>
+                    <Button onAction="#onOpenEditViewClick">Edit</Button>
                 </VBox>
             </VBox>
         </center>

@@ -1,19 +1,36 @@
 package at.htlleonding.settignsmanager.view;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import org.h2.mvstore.cache.CacheLongKeyLIRS;
+
+import java.io.IOException;
 
 public class AppView {
-    public void initialize(Stage stage) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(AppView.class.getResource("app-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 600, 500); // TODO handle this error
-            stage.setTitle("Hello!");
-            stage.setScene(scene);
-            stage.show();
-        } catch(Exception e) {
 
+    private static AppView mAppView;
+
+    private AppView(){
+
+    }
+
+    public static AppView getInstance() {
+        if(mAppView == null) {
+            mAppView = new AppView();
         }
+
+        return mAppView;
+    }
+
+    public void initialize(Stage stage) throws IOException {
+        ViewHelper.showView(stage, ViewId.APPVIEW, null);
+    }
+
+    public void showException(Exception e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setTitle("Error");
+        alert.setContentText(e.getMessage());
+        alert.showAndWait();
     }
 }
