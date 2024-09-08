@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.h2.command.ddl.CreateTable;
 
 import java.io.IOException;
 
@@ -37,6 +38,8 @@ public class AppVCtl {
         mName.setCellValueFactory(new PropertyValueFactory<Property, String>("name"));
         mValue.setCellValueFactory(new PropertyValueFactory<Property, String>("value"));
 
+
+
         mSettings.setItems(AppRepository.getInstance().getSettings());
     }
 
@@ -45,11 +48,14 @@ public class AppVCtl {
 
         Setting setting = mSettings.getSelectionModel().getSelectedItem();
 
+
+        if(setting == null) {
+            AppController.getInstance().handleException(new NothingIsSelectedException("Nothing is selected"));
+            return;
+        }
         ObservableList<Property> properties = setting.getPropertyList();
 
         mPropertiesTableView.setItems(properties);
-
-
     }
 
     @FXML
