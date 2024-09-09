@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Button?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="at.htlleonding.settignsmanager.view.AppVCtl">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <BorderPane>
+        <top>
+            <BorderPane>
+                <center>
+                    <Label style="-fx-font-size: 20pt; -fx-padding: 0 0 50px 0">Settings</Label>
+                </center>
+            </BorderPane>
+        </top>
+        <left>
+            <ListView onMouseClicked="#onSettingClick" fx:id="mSettings" style="-fx-padding: 20px"/>
+        </left>
+        <center>
+            <VBox>
+                <BorderPane>
+                    <center>
+                        <Label style="-fx-font-size: 15pt">Setting 1</Label>
+                    </center>
+                </BorderPane>
+                <VBox>
+                    <Label style="-fx-font-size: 13pt; -fx-padding: 0 0 0 20px">Properties</Label>
+                    <TableView fx:id="mPropertiesTableView">
+                        <columns>
+                            <TableColumn fx:id="mName" text="Name"/>
+                            <TableColumn fx:id="mValue" text="Value"/>
+                        </columns>
+                    </TableView>
+                    <Button onAction="#onOpenEditViewClick">Edit</Button>
+                </VBox>
+            </VBox>
+        </center>
+    </BorderPane>
+</VBox>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="at.htlleonding.fraumantis.AppVCtl">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <BorderPane>
+        <center>
+            <Label>
+                Frau Man Tis
+            </Label>
+        </center>
+    </BorderPane>
+
+    <BorderPane>
+        <top>
+            <BorderPane>
+                <right>
+                    <ComboBox fx:id="userNameCombo" onAction="#onUserSelected"/>
+                </right>
+            </BorderPane>
+        </top>
+
+        <center>
+            <TableView>
+                <!-- TODO: INSERT TABLE COLUMNS HERE-->
+            </TableView>
+        </center>
+
+        <bottom>
+            <HBox alignment="CENTER" spacing="20">
+                <Button>Add</Button>
+                <Button>Remove</Button>
+                <Button>Edit</Button>
+            </HBox>
+        </bottom>
+    </BorderPane>
+</VBox>
