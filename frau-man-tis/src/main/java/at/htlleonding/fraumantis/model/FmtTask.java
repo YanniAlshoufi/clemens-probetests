@@ -5,19 +5,21 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class FmtTask {
+    private final SimpleStringProperty mFromWho;
     private final SimpleBooleanProperty mIsDone;
     private final SimpleStringProperty mDescription;
     private final SimpleIntegerProperty mStartingTime;
     private final SimpleIntegerProperty mEndTime;
 
-    public FmtTask(boolean isDone, String description, int startingTime, int endTime) {
+    public FmtTask(String from, boolean isDone, String description, int startingTime, int endTime) {
+        mFromWho = new SimpleStringProperty(from);
         mIsDone = new SimpleBooleanProperty(isDone);
         mDescription = new SimpleStringProperty(description);
         mStartingTime = new SimpleIntegerProperty(startingTime);
         mEndTime = new SimpleIntegerProperty(endTime);
     }
 
-    public boolean isIsDone() {
+    public boolean isDone() {
         return mIsDone.get();
     }
 
@@ -65,10 +67,22 @@ public class FmtTask {
         this.mEndTime.set(endTime);
     }
 
+    public String getFromWho() {
+        return mFromWho.get();
+    }
+
+    public SimpleStringProperty FromWhoProperty() {
+        return mFromWho;
+    }
+
+    public void setFromWho(String mFrom) {
+        this.mFromWho.set(mFrom);
+    }
+
     @Override
     public String toString() {
         return "FmtTask{mIsDone=%s, mDescription=%s, mStartingTime=%s, mEndTime=%s}"
-            .formatted(mIsDone, mDescription, mStartingTime, mEndTime);
+                .formatted(mIsDone, mDescription, mStartingTime, mEndTime);
     }
 }
 
